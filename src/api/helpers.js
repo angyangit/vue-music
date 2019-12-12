@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axiosReq from 'axios'
 import Loading from 'components/Loading'
 
 const urlMap = {
@@ -12,7 +12,7 @@ const ERR_OK = 0
 export default {
   get(parm, flag) {
     if (!flag) this.show()
-    return axios.get(baseUrl + parm.url, {
+    return axiosReq.get(baseUrl + parm.url, {
       params: parm.data
     }).then((res) => {
       if (!flag) this.hide()
