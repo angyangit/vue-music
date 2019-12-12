@@ -7,7 +7,7 @@ const urlMap = {
 }
 const baseUrl = urlMap[process.env.NODE_ENV]
 const ERR_OK = 0
-var helpers = {
+export default {
   get(parm, flag) {
     // if (!flag) this.show()
     return axiosReq.get(baseUrl + parm.url, {
@@ -39,4 +39,3 @@ var helpers = {
   //   this.LoadingCom.hide()
   // }
 }
-module.exports = helpers
