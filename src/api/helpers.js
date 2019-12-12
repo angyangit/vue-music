@@ -1,6 +1,6 @@
-import axiosReq from 'axios'
 import Loading from 'components/Loading'
 
+const axiosReq = require('axios')
 const urlMap = {
   development: '/',
   production: '/'
