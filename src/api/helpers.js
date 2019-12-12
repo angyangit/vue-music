@@ -3,7 +3,7 @@ import Loading from 'components/Loading'
 
 const urlMap = {
   development: '/',
-  production: 'http://47.100.20.216'
+  production: '/'
   // production: 'http://ustbhuangyi.com/sell/'
 }
 const baseUrl = urlMap[process.env.NODE_ENV]

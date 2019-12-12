@@ -1,6 +1,6 @@
 var express = require('express')
 var axios = require('axios')
-var helper = require('api/helpers')
+var helper = require('./src/api/helpers')
 var port = 3000
 
 var app = express()
