@@ -1,5 +1,5 @@
+import helper from './src/api/helpers'
 var express = require('express')
-var helper = require('./src/api/helpers')
 var port = 3000
 
 var app = express()
