@@ -1,4 +1,4 @@
-const Loading = require('../components/Loading')
+const Loading = require('../components/Loading.vue')
 
 const axiosReq = require('axios')
 const urlMap = {
