@@ -1,30 +1,34 @@
 var express = require('express')
 var axios = require('axios')
-
+var helper = require('api/helpers')
 var port = 3000
 
 var app = express()
 
 var apiRoutes = express.Router()
 
-apiRoutes.get('/getDiscList', function (req, res) {
-  var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
-  axios.get(url, {
-    headers: {
-      referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
-    },
-    params: req.query
-  }).then((response) => {
+apiRoutes.get('/getRecommmend', function (req, res) {
+  const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg?'
+  helper.get({url, params: req.query}).then((response) => {
     res.json(response.data)
+    console.log('getRecommmend', response)
   }).catch((e) => {
-    console.log(e)
+    console.log('getRecommmend', e)
   })
 })
 
+apiRoutes.get('/getRanking', function (req, res) {
+    const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg?'
+    helper.get({url, params: req.query}).then((response) => {
+      res.json(response.data)
+      console.log('getRanking', response)
+    }).catch((e) => {
+      console.log('getRanking', e)
+    })
+  }
+)
 apiRoutes.get('/lyric', function (req, res) {
   var url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
-
   axios.get(url, {
     headers: {
       referer: 'https://c.y.qq.com/',
