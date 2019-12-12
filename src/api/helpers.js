@@ -3,7 +3,8 @@ import Loading from 'components/Loading'
 
 const urlMap = {
   development: '/',
-  production: 'http://ustbhuangyi.com/sell/'
+  production: '/'
+  // production: 'http://ustbhuangyi.com/sell/'
 }
 const baseUrl = urlMap[process.env.NODE_ENV]
 const ERR_OK = 0
