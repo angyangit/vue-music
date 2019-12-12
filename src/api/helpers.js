@@ -1,5 +1,4 @@
 const Loading = require('../components/Loading.vue')
-
 const axiosReq = require('axios')
 const urlMap = {
   development: '/',
@@ -8,7 +7,6 @@ const urlMap = {
 }
 const baseUrl = urlMap[process.env.NODE_ENV]
 const ERR_OK = 0
-
 var helpers = {
   get(parm, flag) {
     if (!flag) this.show()
