@@ -1,5 +1,5 @@
 // const Loading = require('../components/Loading.vue')
-const axiosReq = require('axios')
+import axiosReq from 'axios'
 const urlMap = {
   development: '/',
   production: 'http://47.100.20.216:3000/'
