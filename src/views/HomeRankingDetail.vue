@@ -4,6 +4,7 @@
       ref="scroll">
       <div class="warper">
         <div class="img-warper">
+          <i @click="goBack" class="icon-back">返回</i>
           <img class="logo"
                :src="this.data.data.mbFrontPicUrl ? this.data.data.mbFrontPicUrl : this.data.data.headPicUrl"/>
         </div>
@@ -27,8 +28,6 @@
         <p class="sing-intro-content">{{data.data.intro}}</p>
       </div>
     </cube-scroll>
-    <i @click="goBack" class="icon-back">返回</i>
-
   </div>
 </template>
 
@@ -85,13 +84,6 @@
     left 0
     z-index 1000
     background-color #fafafa
-    .icon-back
-      position absolute
-      top 10px
-      z-index 1000
-      font-size 20px
-      color white
-      left 10px
     .warper
       margin-bottom 30px
       .img-warper
@@ -102,10 +94,18 @@
         border 1px solid #f1f1f1
         border-radius 10px
         box-shadow 5px 5px 5px #ccc
+        position relative
         .logo
           width: 200px
           border-radius 5px
           height: 200px
+        .icon-back
+          position absolute
+          top 10px
+          z-index 1000
+          font-size 20px
+          color $color-theme
+          left 10px
       .title
         color $color-text-main
         text-align center

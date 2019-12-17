@@ -1,4 +1,3 @@
-import helper from 'api/helpers'
 import jsonp from 'common/js/jsonp'
 import axios from 'axios'
 
@@ -17,7 +16,6 @@ export function getRecommendBanner() {
   const options = {
     param: 'jsonpCallback'
   }
-
   return jsonp(url, data, options)
 }
 
@@ -160,7 +158,7 @@ export function getSingerList() {
 }
 
 export function getSingerListJsonp(pageNum, pageSize) {
-  const url = 'apc/v8/fcg-bin/v8.fcg'
+  const url = 'https://c.y.qq.com/v8/fcg-bin/v8.fcg'
 
   const data = {
     g_tk: 1928093487,
@@ -189,7 +187,7 @@ export function getSearchLoveTip() {
    * https://u.y.qq.com/cgi-bin/musicu.fcg?-=getUCGI23229537678951417&g_tk=5381&loginUin=582821422&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A4%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222019-11-20%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D
    * * @type {string}
    */
-  const url = 'apc/splcloud/fcgi-bin/gethotkey.fcg?'
+  const url = '/api/getSearchLoveTip'
   const data = {
     g_tk: 5381,
     loginUin: 582821422,
@@ -201,7 +199,11 @@ export function getSearchLoveTip() {
     platform: 'yqq.json',
     needNewCode: 0
   }
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getSearchSimple(key) {
@@ -209,7 +211,7 @@ export function getSearchSimple(key) {
    * https://u.y.qq.com/cgi-bin/musicu.fcg?-=getUCGI23229537678951417&g_tk=5381&loginUin=582821422&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A4%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222019-11-20%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D
    * * @type {string}
    */
-  const url = 'apc/splcloud/fcgi-bin/smartbox_new.fcg?'
+  const url = 'https://c.y.qq.com/splcloud/fcgi-bin/smartbox_new.fcg?'
   const data = {
     is_xml: 0,
     key: key,
@@ -230,7 +232,7 @@ export function getSearchSimple(key) {
 }
 
 export function getSearchClient(key, tag) {
-  const url = 'apc/soso/fcgi-bin/client_search_cp?'
+  const url = '/api/getSearchClient'
   const common = {
     ct: 24,
     qqmusic_ver: 1298,
@@ -238,7 +240,7 @@ export function getSearchClient(key, tag) {
     catZhida: 1,
     lossless: 0,
     p: 1,
-    n: 10,
+    n: 20,
     w: key,
     g_tk: 5381,
     loginUin: 582821422,
@@ -280,9 +282,11 @@ export function getSearchClient(key, tag) {
     target = mv
   }
   data = Object.assign(target, common)
-  console.log("parm==>", data)
-
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getSongList(singerMid) {
@@ -360,7 +364,7 @@ export function getSongPlayUrl(singerMid) {
 export function getLyric(mid) {
   /**
    *  https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?g_tk=5381&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&nobase64=1&musicid=222035392&songtype=0&_=1570845554082&jsonpCallback=jsonp1 */
-  const url = 'apc/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
+  const url = '/api/getLyric'
   const data = {
     g_tk: 1928093487,
     inCharset: 'utf - 8',
@@ -374,5 +378,9 @@ export function getLyric(mid) {
     categoryId: 10000000,
     pcachetime: new Date().getTime()
   }
-  return helper.get({url, data}, true)
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }

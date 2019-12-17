@@ -11,10 +11,6 @@ apiRoutes.get('/getRecommmend', function (req, res) {
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
   console.log('req', req)
   axios.get(url, {
-    headers: {
-      referer: 'https://c.y.qq.com/',
-      host: 'c.y.qq.com'
-    },
     params: req.query
   }).then((response) => {
     res.json(response.data)
@@ -89,8 +85,49 @@ apiRoutes.get('/getSongPlayUrl', function (req, res) {
   }
 )
 
-app.use('/api', apiRoutes)
+apiRoutes.get('/getSearchLoveTip', function (req, res) {
+    const url = 'https://c.y.qq.com/splcloud/fcgi-bin/gethotkey.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
 
+apiRoutes.get('/getSearchClient', function (req, res) {
+    const url = 'https://c.y.qq.com/soso/fcgi-bin/client_search_cp'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
+apiRoutes.get('/getLyric', function (req, res) {
+    const url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
+
+
+app.use('/api', apiRoutes)
 app.use(express.static('./dist'))
 module.exports = app.listen(port, function (err) {
   if (err) {
