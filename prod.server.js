@@ -36,6 +36,58 @@ apiRoutes.get('/getRanking', function (req, res) {
     })
   }
 )
+apiRoutes.get('/getRankingDetail', function (req, res) {
+    const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
+apiRoutes.get('/getSingerList', function (req, res) {
+    const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
+apiRoutes.get('/getSongList', function (req, res) {
+    const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
+apiRoutes.get('/getSongPlayUrl', function (req, res) {
+    const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+    console.log('req', req)
+    axios.get(url, {
+      params: req.query
+    }).then((response) => {
+      res.json(response.data)
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
+  }
+)
 
 app.use('/api', apiRoutes)
 

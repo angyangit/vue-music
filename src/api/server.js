@@ -1,6 +1,7 @@
 import helper from 'api/helpers'
 import jsonp from 'common/js/jsonp'
 import axios from 'axios'
+
 export function getRecommendBanner() {
   const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
   const data = {
@@ -49,7 +50,11 @@ export function getRecommmend() {
       }
     }
   }
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getRanking() {
@@ -57,7 +62,7 @@ export function getRanking() {
    * https://u.y.qq.com/cgi-bin/musicu.fcg?_=1574230237795&data={%22comm%22:{%22g_tk%22:5381,%22uin%22:582821422,%22format%22:%22json%22,%22inCharset%22:%22utf-8%22,%22outCharset%22:%22utf-8%22,%22notice%22:0,%22platform%22:%22h5%22,%22needNewCode%22:1,%22ct%22:23,%22cv%22:0},%22topList%22:{%22module%22:%22musicToplist.ToplistInfoServer%22,%22method%22:%22GetAll%22,%22param%22:{}}}
    * @type {string}
    */
-  // const url = 'api/cgi-bin/musicu.fcg?'
+    // const url = 'api/cgi-bin/musicu.fcg?'
   const url = '/api/getRanking'
   const data = {
     '-': '1573637219524',
@@ -93,7 +98,7 @@ export function getRankingDetail(topId, period) {
    * https://u.y.qq.com/cgi-bin/musicu.fcg?-=getUCGI23229537678951417&g_tk=5381&loginUin=582821422&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A4%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222019-11-20%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D
    * * @type {string}
    */
-  const url = 'api/cgi-bin/musicu.fcg?'
+  const url = '/api/getRankingDetail'
   const data = {
     '-': 'getUCGI7038683958086078',
     g_tk: 5381,
@@ -114,7 +119,11 @@ export function getRankingDetail(topId, period) {
       "comm": {"ct": 24, "cv": 0}
     }
   }
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getSingerList() {
@@ -122,7 +131,7 @@ export function getSingerList() {
    * https://u.y.qq.com/cgi-bin/musicu.fcg?-=getUCGI23229537678951417&g_tk=5381&loginUin=582821422&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0&data=%7B%22detail%22%3A%7B%22module%22%3A%22musicToplist.ToplistInfoServer%22%2C%22method%22%3A%22GetDetail%22%2C%22param%22%3A%7B%22topId%22%3A4%2C%22offset%22%3A0%2C%22num%22%3A20%2C%22period%22%3A%222019-11-20%22%7D%7D%2C%22comm%22%3A%7B%22ct%22%3A24%2C%22cv%22%3A0%7D%7D
    * * @type {string}
    */
-  const url = 'api/cgi-bin/musicu.fcg?'
+  const url = '/api/getSingerList'
   const data = {
     '-': 'getUCGI21038675370621762',
     g_tk: 5381,
@@ -143,7 +152,11 @@ export function getSingerList() {
       }
     }
   }
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getSingerListJsonp(pageNum, pageSize) {
@@ -273,7 +286,7 @@ export function getSearchClient(key, tag) {
 }
 
 export function getSongList(singerMid) {
-  const url = 'api/cgi-bin/musicu.fcg?'
+  const url = '/api/getSongList'
   const data = {
     g_tk: 5381,
     '-': 'getSingerSong07967918462176682',
@@ -295,11 +308,15 @@ export function getSongList(singerMid) {
     }
   }
 
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getSongPlayUrl(singerMid) {
-  const url = 'api/cgi-bin/musicu.fcg?'
+  const url = '/api/getSongPlayUrl'
   const data = {
     '-': 'getplaysongvkey8601338410848023',
     g_tk: 5381,
@@ -333,7 +350,11 @@ export function getSongPlayUrl(singerMid) {
     }
   }
 
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getLyric(mid) {
