@@ -1,10 +1,10 @@
 var express = require('express')
 var axios = require('axios')
-
+var history = require('connect-history-api-fallback')
 var port = 8088
 
 var app = express()
-
+app.use(history())
 var apiRoutes = express.Router()
 
 apiRoutes.get('/getRecommmend', function (req, res) {
@@ -125,8 +125,6 @@ apiRoutes.get('/getLyric', function (req, res) {
     })
   }
 )
-
-
 app.use('/api', apiRoutes)
 app.use(express.static('./dist'))
 module.exports = app.listen(port, function (err) {

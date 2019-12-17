@@ -4,7 +4,7 @@
       ref="scroll">
       <div class="warper">
         <div class="img-warper">
-          <i @click="goBack" class="icon-back">返回</i>
+          <i @click="goBack" class="icon-back"/>
           <img class="logo"
                :src="this.data.data.mbFrontPicUrl ? this.data.data.mbFrontPicUrl : this.data.data.headPicUrl"/>
         </div>
@@ -87,18 +87,19 @@
     .warper
       margin-bottom 30px
       .img-warper
-        width: 200px
+        width: 100%
         height: 200px
         text-align center
         margin 20px auto
-        border 1px solid #f1f1f1
-        border-radius 10px
-        box-shadow 5px 5px 5px #ccc
         position relative
         .logo
           width: 200px
           border-radius 5px
           height: 200px
+          border 1px solid #f1f1f1
+          border-radius 10px
+          box-shadow 5px 5px 5px #ccc
+          margin 0 auto
         .icon-back
           position absolute
           top 10px
