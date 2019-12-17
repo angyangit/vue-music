@@ -1,5 +1,5 @@
-import express from 'express'
-import axios from 'axios'
+var express = require('express')
+var axios = require('axios')
 
 var port = 3000
 
@@ -40,11 +40,10 @@ apiRoutes.get('/getRanking', function (req, res) {
 app.use('/api', apiRoutes)
 
 app.use(express.static('./dist'))
-var ap = app.listen(port, function (err) {
+module.exports = app.listen(port, function (err) {
   if (err) {
     console.log(err)
     return
   }
   console.log('Listening at http://localhost:' + port + '\n')
 })
-export default {ap}
