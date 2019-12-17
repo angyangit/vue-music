@@ -1,7 +1,7 @@
 var express = require('express')
 var axios = require('axios')
 
-var port = 3100
+var port = 8088
 
 var app = express()
 
@@ -9,6 +9,7 @@ var apiRoutes = express.Router()
 
 apiRoutes.get('/getRecommmend', function (req, res) {
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg'
+  console.log('req', req)
   axios.get(url, {
     headers: {
       referer: 'https://c.y.qq.com/',
