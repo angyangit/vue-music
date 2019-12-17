@@ -1,6 +1,6 @@
 import helper from 'api/helpers'
 import jsonp from 'common/js/jsonp'
-
+import axios from 'axios'
 export function getRecommendBanner() {
   const url = 'https://c.y.qq.com/musichall/fcgi-bin/fcg_yqqhomepagerecommend.fcg'
   const data = {
@@ -22,7 +22,7 @@ export function getRecommendBanner() {
 
 export function getRecommmend() {
   // const url = 'api/cgi-bin/musicu.fcg?'
-  const url = 'api/getRecommmend'
+  const url = '/api/getRecommmend'
   const data = {
     cgiKey: 'GetHomePage',
     '-': '1573637219524',
@@ -58,7 +58,7 @@ export function getRanking() {
    * @type {string}
    */
   // const url = 'api/cgi-bin/musicu.fcg?'
-  const url = 'api/getRanking'
+  const url = '/api/getRanking'
   const data = {
     '-': '1573637219524',
     data: {
@@ -81,7 +81,11 @@ export function getRanking() {
       }
     }
   }
-  return helper.get({url, data})
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
 }
 
 export function getRankingDetail(topId, period) {

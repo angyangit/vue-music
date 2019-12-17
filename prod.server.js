@@ -1,5 +1,5 @@
-import helper from './src/api/helpers'
 import express from 'express'
+import axios from 'axios'
 
 var port = 3000
 
@@ -9,20 +9,30 @@ var apiRoutes = express.Router()
 
 apiRoutes.get('/getRecommmend', function (req, res) {
   const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg?'
-  helper.get({url, params: req.query}).then((response) => {
+  axios.get(url, {
+    headers: {
+      referer: 'https://c.y.qq.com/',
+      host: 'c.y.qq.com'
+    },
+    params: req.query
+  }).then((response) => {
     res.json(response.data)
-    console.log('getRecommmend', response)
   }).catch((e) => {
-    console.log('getRecommmend', e)
+    console.log(e)
   })
 })
 apiRoutes.get('/getRanking', function (req, res) {
     const url = 'https://u.y.qq.com/cgi-bin/musicu.fcg?'
-    helper.get({url, params: req.query}).then((response) => {
+    axios.get(url, {
+      headers: {
+        referer: 'https://c.y.qq.com/',
+        host: 'c.y.qq.com'
+      },
+      params: req.query
+    }).then((response) => {
       res.json(response.data)
-      console.log('getRanking', response)
     }).catch((e) => {
-      console.log('getRanking', e)
+      console.log(e)
     })
   }
 )
