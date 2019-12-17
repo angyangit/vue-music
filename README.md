@@ -12,10 +12,8 @@ node prod.server.js
 ```
 
 ### Customize configuration
-
- ![](https://github.com/angyangit/vue-music/blob/master/img/aa.PNG?raw=true)
- 
- ![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/bb.PNG)
+![](https://github.com/angyangit/vue-music/blob/master/img/aa.PNG?raw=true)
+![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/bb.PNG)
  
  ![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1727.PNG)
  ![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1728.PNG)
