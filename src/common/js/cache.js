@@ -9,7 +9,10 @@ const PLAY_MAX_LEN = 200
 const FAVORITE_KEY = '__favorite__'
 const FAVORITE_MAX_LEN = 200
 
-function insertArray(arr, val, compare, maxLen) {
+const HISTORY_SONG_LIST = '__history_song__'
+const HISTORY_SONG_LIST_MAX_LENGTH = 20
+
+function insertArray (arr, val, compare, maxLen) {
   const index = arr.findIndex(compare)
   if (index === 0) {
     return
@@ -23,15 +26,19 @@ function insertArray(arr, val, compare, maxLen) {
   }
 }
 
-function deleteFromArray(arr, compare) {
+function deleteFromArray (arr, compare) {
   const index = arr.findIndex(compare)
   if (index > -1) {
     arr.splice(index, 1)
   }
 }
 
-export function saveSearch(query) {
-  let searches = storage.get(SEARCH_KEY, [])
+function deleteFromArrayByPos (arr, pos) {
+  arr.splice(pos, 1)
+}
+
+export function saveSearch (query) {
+  const searches = storage.get(SEARCH_KEY, [])
   insertArray(searches, query, (item) => {
     return item === query
   }, SEARCH_MAX_LEN)
@@ -39,26 +46,24 @@ export function saveSearch(query) {
   return searches
 }
 
-export function deleteSearch(query) {
-  let searches = storage.get(SEARCH_KEY, [])
-  deleteFromArray(searches, (item) => {
-    return item === query
-  })
+export function deleteSearch (pos) {
+  const searches = storage.get(SEARCH_KEY, [])
+  deleteFromArrayByPos(searches, pos)
   storage.set(SEARCH_KEY, searches)
   return searches
 }
 
-export function clearSearch() {
+export function clearSearch () {
   storage.remove(SEARCH_KEY)
   return []
 }
 
-export function loadSearch() {
+export function loadSearch () {
   return storage.get(SEARCH_KEY, [])
 }
 
-export function savePlay(song) {
-  let songs = storage.get(PLAY_KEY, [])
+export function savePlay (song) {
+  const songs = storage.get(PLAY_KEY, [])
   insertArray(songs, song, (item) => {
     return song.id === item.id
   }, PLAY_MAX_LEN)
@@ -66,12 +71,12 @@ export function savePlay(song) {
   return songs
 }
 
-export function loadPlay() {
+export function loadPlay () {
   return storage.get(PLAY_KEY, [])
 }
 
-export function saveFavorite(song) {
-  let songs = storage.get(FAVORITE_KEY, [])
+export function saveFavorite (song) {
+  const songs = storage.get(FAVORITE_KEY, [])
   insertArray(songs, song, (item) => {
     return song.id === item.id
   }, FAVORITE_MAX_LEN)
@@ -79,8 +84,8 @@ export function saveFavorite(song) {
   return songs
 }
 
-export function deleteFavorite(song) {
-  let songs = storage.get(FAVORITE_KEY, [])
+export function deleteFavorite (song) {
+  const songs = storage.get(FAVORITE_KEY, [])
   deleteFromArray(songs, (item) => {
     return item.id === song.id
   })
@@ -88,6 +93,20 @@ export function deleteFavorite(song) {
   return songs
 }
 
-export function loadFavorite() {
+export function loadFavorite () {
   return storage.get(FAVORITE_KEY, [])
+}
+
+export function addHistorySongList (song) {
+  const historySong = loadHistorySongList()
+  insertArray(historySong, song, (item) => {
+    return song.id === item.id
+  }, HISTORY_SONG_LIST_MAX_LENGTH)
+  storage.set(HISTORY_SONG_LIST, historySong)
+  console.log('addHistorySongList', historySong)
+  return historySong
+}
+
+export function loadHistorySongList () {
+  return storage.get(HISTORY_SONG_LIST, [])
 }

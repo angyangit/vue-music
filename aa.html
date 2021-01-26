@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent {
+            background-color: rgba(33, 55, 22, .5);
+            height: 500px;
+            margin: 0 auto;
+            width: 600px;
+        }
+
+        .left {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-left: -100%;
+            background-color: rgba(123, 99, 22, .5);
+        }
+
+        .right {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin-left: -100px;
+            background-color: rgba(11, 219, 22, .8);
+        }
+
+        .center {
+            float: left;
+            width: 100%;
+            height: 100px;
+            background-color: rgba(11, 99, 22, .5);
+        }
+
+        .child2-c {
+            background-color: rgba(111, 219, 212, .9);
+        }
+
+        .child2-cc {
+            background-color: rgba(11, 29, 212, .9);
+            margin: 20px;
+            height: 30px;
+        }
+
+        .test {
+            position: fixed;
+            height: 400px;
+            width: 200px;
+            background: red;
+            z-index: 100;
+        }
+
+        .div1 {
+            width: 100%;
+            height: 40px;
+            background: rgba(123, 144, 22, .6);
+        }
+
+        .test-child {
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(123, 44, 122, .8);
+        }
+
+        .test-child1 {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: rgba(223, 144, 222, .8);
+        }
+    </style>
+</head>
+<body>
+<!--<div class='parent'>-->
+<!--    <div class='center'>-->
+<!--        <div class='child2-c'>-->
+<!--            center-->
+<!--            <div class='child2-cc' id='click'>-->
+<!--                child2-cc click-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class='left'>left</div>-->
+<!--    <div class='right'>right</div>-->
+<!--</div>-->
+<div class='test'>
+    <div class='div1'>div1</div>
+    <div class='test-child'>
+        <div class='test-child1'>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+           <p>test-child1</p>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+const originalPush = VueRouter.prototype.push
+
+VueRouter.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 Vue.use(VueRouter)
 
 const routes = [
@@ -10,48 +15,51 @@ const routes = [
   },
   {
     path: '/recommend',
-    name: 'recommend',
-    component: () => import('views/HomeRecommend')
-  },
-  {
-    path: '/hot',
-    name: 'hot',
-    component: () => import('views/HomeHot.vue'),
+    component: () => import('../views/Recommend'),
     children: [
       {
         path: ':id',
-        name: 'HomeHotDetail',
-        component: (resolve) => {
-          import('views/HomeHotDetail').then((module) => {
-            resolve(module)
-          })
-        }
-        // require('views/HomeHotDetail').default
+        component: () => import('../views/RecommendDetail')
+      }
+    ]
+  },
+  {
+    path: '/singer',
+    component: () => import('../views/Singer'),
+    children: [
+      {
+        path: ':id',
+        component: () => import('../views/SingerDetail')
+      }
+    ]
+  },
+  {
+    path: '/rank',
+    component: () => import('../views/Rank'),
+    children: [
+      {
+        path: ':id',
+        component: () => import('../views/RankDetail')
       }
     ]
   },
   {
     path: '/search',
-    name: 'search',
-    component: () => import('views/HomeSearch')
-  },
-  {
-    path: '/ranking',
-    name: 'ranking',
-    component: () => import('views/HomeRanking'),
+    component: () => import('../views/Search'),
     children: [
       {
-        path: 'detail',
-        name: 'HomeRankingDetail',
-        component: require('views/HomeRankingDetail.vue').default
+        path: ':id',
+        component: () => import('../views/SingerDetail')
       }
     ]
+  },
+  {
+    path: '/mine',
+    component: () => import('../views/Mine')
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
