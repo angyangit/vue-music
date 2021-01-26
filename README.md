@@ -1,31 +1,29 @@
 # vue-music
 
 ## Project setup
-
 ```
 npm install
 ```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
 ```
+
+### Run your tests
 ```
-node prod.server.js
+npm run test
 ```
 
+### Lints and fixes files
+```
+npm run lint
+```
 
 ### Customize configuration
-
-![aa](https://github.com/angyangit/vue-music/blob/master/img/4598B5E7-ACF4-4156-A10B-94A29251447E.png?raw=true
-)
-
-
-![aa](https://github.com/angyangit/vue-music/blob/master/img/aa.PNG?raw=true)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/bb.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1727.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1728.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1729.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1730.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1731.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1732.PNG)
-![](https://raw.githubusercontent.com/angyangit/vue-music/master/img/IMG_1733.PNG)
+See [Configuration Reference](https://cli.vuejs.org/config/).
