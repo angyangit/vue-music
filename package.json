@@ -19,7 +19,7 @@
     "js-base64": "^3.6.0",
     "jsonp": "^0.2.1",
     "lyric-parser": "^1.0.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "vconsole": "^3.3.4",
     "vue": "^2.6.11",
     "vue-lazyload": "^1.3.3",
